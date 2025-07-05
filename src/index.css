@@ -8,13 +8,13 @@
   :root {
     /* Food-inspired Color Palette */
     --background: 20 20% 97%;
-    --foreground: 25 25% 15%;
+    --foreground: 25 25% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 25 25% 15%;
+    --card-foreground: 25 25% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 25 25% 15%;
+    --popover-foreground: 25 25% 8%;
 
     /* Warm Orange Primary - Appetizing */
     --primary: 25 95% 53%;
@@ -23,17 +23,17 @@
 
     /* Rich Brown Secondary - Earthy */
     --secondary: 25 30% 92%;
-    --secondary-foreground: 25 25% 15%;
-    --secondary-dark: 25 50% 25%;
+    --secondary-foreground: 25 25% 8%;
+    --secondary-dark: 25 50% 20%;
 
-    /* Muted Food Tones */
+    /* Muted Food Tones - Better Contrast */
     --muted: 25 20% 95%;
-    --muted-foreground: 25 15% 45%;
+    --muted-foreground: 25 25% 25%;
 
     /* Fresh Green Accent - Natural */
     --accent: 120 40% 88%;
-    --accent-foreground: 120 100% 15%;
-    --accent-vibrant: 120 60% 45%;
+    --accent-foreground: 120 100% 10%;
+    --accent-vibrant: 120 60% 35%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -66,28 +66,28 @@
 
   .dark {
     --background: 25 25% 8%;
-    --foreground: 25 20% 95%;
+    --foreground: 25 20% 98%;
 
     --card: 25 25% 10%;
-    --card-foreground: 25 20% 95%;
+    --card-foreground: 25 20% 98%;
 
     --popover: 25 25% 10%;
-    --popover-foreground: 25 20% 95%;
+    --popover-foreground: 25 20% 98%;
 
     --primary: 25 95% 53%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 25 100% 65%;
 
     --secondary: 25 25% 15%;
-    --secondary-foreground: 25 20% 95%;
-    --secondary-dark: 25 50% 25%;
+    --secondary-foreground: 25 20% 98%;
+    --secondary-dark: 25 50% 20%;
 
     --muted: 25 25% 12%;
-    --muted-foreground: 25 15% 65%;
+    --muted-foreground: 25 15% 75%;
 
     --accent: 120 40% 15%;
-    --accent-foreground: 120 60% 85%;
-    --accent-vibrant: 120 60% 45%;
+    --accent-foreground: 120 60% 90%;
+    --accent-vibrant: 120 60% 50%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 100%;
