@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "about": "About",
+    "contact": "Contact",
+    "reservations": "Reservations"
+  },
+  "hero": {
+    "title": "Savor Every Moment",
+    "subtitle": "Experience Culinary Excellence",
+    "description": "Discover a world of flavors crafted with passion and served with love. From traditional recipes to modern innovations, every dish tells a story.",
+    "cta": "Explore Menu",
+    "reserveBtn": "Reserve Table"
+  },
+  "menu": {
+    "title": "Our Signature Menu",
+    "subtitle": "Crafted with Love & Excellence",
+    "categories": {
+      "appetizers": "Appetizers",
+      "mains": "Main Courses",
+      "desserts": "Desserts",
+      "beverages": "Beverages"
+    }
+  },
+  "about": {
+    "title": "Our Story",
+    "subtitle": "Passion Meets Perfection",
+    "content": "Founded with a vision to bring authentic flavors and modern culinary artistry together, Savora has been delighting guests for over a decade. Our commitment to quality ingredients and exceptional service makes every meal memorable."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We'd Love to Hear from You",
+    "address": "123 Culinary Street, Food District",
+    "phone": "+1 (555) 123-4567",
+    "email": "hello@savora.com",
+    "hours": "Daily: 11:00 AM - 11:00 PM"
+  },
+  "common": {
+    "loading": "Loading...",
+    "viewMore": "View More",
+    "orderNow": "Order Now",
+    "bookTable": "Book Table",
+    "language": "Language",
+    "english": "English",
+    "arabic": "العربية"
+  }
+}
