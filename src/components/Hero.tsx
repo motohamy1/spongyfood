@@ -1,28 +1,8 @@
-import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Button } from '@/components/ui/button';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Float, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import heroImage from '@/assets/hero-dish.jpg';
-
-// 3D Floating Food Element
-const FloatingFood = () => {
-  return (
-    <Float speed={1} rotationIntensity={1} floatIntensity={2}>
-      <Sphere args={[1, 100, 200]} scale={2}>
-        <MeshDistortMaterial
-          color="#ff6b35"
-          attach="material"
-          distort={0.3}
-          speed={1.5}
-          roughness={0}
-        />
-      </Sphere>
-    </Float>
-  );
-};
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -33,16 +13,32 @@ const Hero = () => {
       {/* Background with Gradient */}
       <div className="absolute inset-0 hero-gradient opacity-90" />
       
-      {/* 3D Canvas Background */}
-      <div className="absolute inset-0 opacity-20">
-        <Canvas camera={{ position: [0, 0, 5] }}>
-          <Suspense fallback={null}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
-            <FloatingFood />
-            <OrbitControls enableZoom={false} enablePan={false} />
-          </Suspense>
-        </Canvas>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          animate={{ 
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0]
+          }}
+          transition={{ 
+            duration: 15, 
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-accent-vibrant/10 rounded-full blur-3xl"
+        />
       </div>
 
       {/* Content Container */}
