@@ -11,6 +11,10 @@ const MenuSection = () => {
   const { t } = useTranslation();
   const { isRTL } = useLanguage();
 
+  const handleOrder = () => {
+    window.open('https://wa.me/1234567890?text=I would like to place an order', '_blank');
+  };
+
   const menuCategories = [
     {
       key: 'appetizers',
@@ -132,6 +136,7 @@ const MenuSection = () => {
           <Button 
             size="lg"
             className="magnetic-btn hover-lift bg-warm-gradient"
+            onClick={handleOrder}
           >
             {t('common.orderNow')}
           </Button>

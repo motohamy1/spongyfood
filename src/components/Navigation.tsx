@@ -23,6 +23,10 @@ const Navigation = () => {
     { key: 'contact', href: '#contact' },
   ];
 
+  const handleReservation = () => {
+    window.open('tel:+20-1234567890', '_self');
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -38,13 +42,14 @@ const Navigation = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-display font-bold gradient-text"
+            className={`text-3xl font-display font-bold cursor-grab 
+              ${isRTL ? 'text-primary' : 'text-slate-50'}`}
           >
             Savora
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className={`hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2 ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-6'}`}>
             {navItems.map((item) => (
               <motion.a
                 key={item.key}
@@ -57,19 +62,20 @@ const Navigation = () => {
                 {t(`nav.${item.key}`)}
               </motion.a>
             ))}
-            
-            {/* Language Toggle */}
+          </div>
+
+          {/* Right Side Buttons */}
+          <div className={`hidden md:flex items-center
+             ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-4'}`}>
             <Button
               variant="outline"
               size="sm"
               onClick={toggleLanguage}
               className="magnetic-btn"
             >
-              {currentLanguage === 'en' ? 'ع' : 'EN'}
+              {currentLanguage === 'en' ? 'ع' : 'EN '}
             </Button>
-
-            {/* CTA Button */}
-            <Button className="magnetic-btn hover-lift">
+            <Button className="magnetic-btn hover-lift" onClick={handleReservation}>
               {t('nav.reservations')}
             </Button>
           </div>
@@ -115,7 +121,7 @@ const Navigation = () => {
                 {t(`nav.${item.key}`)}
               </a>
             ))}
-            <Button className="w-full magnetic-btn">
+            <Button className="w-full magnetic-btn" onClick={handleReservation}>
               {t('nav.reservations')}
             </Button>
           </div>

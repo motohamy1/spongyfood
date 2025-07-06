@@ -8,10 +8,14 @@ const Hero = () => {
   const { t } = useTranslation();
   const { isRTL } = useLanguage();
 
+  const handleOrder = () => {
+    window.open('https://wa.me/1234567890?text=I would like to place an order', '_blank');
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background with Gradient */}
-      <div className="absolute inset-0 hero-gradient opacity-90" />
+      <div className="absolute inset-0 hero-gradient opacity-96" />
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -25,7 +29,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
         />
         <motion.div
           animate={{ 
@@ -47,7 +51,10 @@ const Hero = () => {
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ 
+                      scale: [1, 1.05, 1],
+                      opacity: 1, y: 0 
+                    }}
             transition={{ duration: 0.8 }}
             className={`space-y-6 ${isRTL ? 'text-right' : 'text-left'}`}
           >
@@ -99,7 +106,9 @@ const Hero = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="magnetic-btn hover-lift border-white text-white hover:bg-white hover:text-primary"
+                className="magnetic-btn hover-lift border-white text-primary
+                          hover:bg-white hover:text-primary"
+                onClick={handleOrder}
               >
                 {t('hero.reserveBtn')}
               </Button>
