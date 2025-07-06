@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/hooks/useLanguage';
+import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 
 const Navigation = () => {
   const { t } = useTranslation();
   const { toggleLanguage, isRTL, currentLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
@@ -42,8 +44,7 @@ const Navigation = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className={`text-3xl font-display font-bold cursor-grab 
-              ${isRTL ? 'text-primary' : 'text-slate-50'}`}
+            className="text-3xl font-display font-bold cursor-grab text-foreground"
           >
             Savora
           </motion.div>
@@ -66,7 +67,15 @@ const Navigation = () => {
 
           {/* Right Side Buttons */}
           <div className={`hidden md:flex items-center
-             ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-4'}`}>
+                            ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-4'}`}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleTheme}
+              className="magnetic-btn"
+            >
+              {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -82,6 +91,13 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleTheme}
+            >
+              {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+            </Button>
             <Button
               variant="ghost"
               size="sm"
