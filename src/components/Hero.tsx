@@ -100,14 +100,15 @@ const Hero = () => {
               <Button 
                 size="lg"
                 className="magnetic-btn hover-lift bg-white text-primary hover:bg-white/90"
-                onClick={handleOrder}
               >
                 {t('hero.cta')}
               </Button>
               <Button 
                 size="lg"
                 variant="outline"
-                className="magnetic-btn hover-lift border-white text-white hover:bg-white hover:text-primary"
+                className="magnetic-btn hover-lift border-white text-primary
+                                                  hover:bg-white hover:text-primary"
+                onClick={handleOrder}
               >
                 {t('hero.reserveBtn')}
               </Button>
