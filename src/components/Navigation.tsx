@@ -46,7 +46,7 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             className="text-3xl font-display font-bold cursor-grab text-foreground"
           >
-            Savora
+            Savory
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -122,9 +122,13 @@ const Navigation = () => {
             opacity: isMenuOpen ? 1 : 0, 
             height: isMenuOpen ? 'auto' : 0 
           }}
-          className="md:hidden overflow-hidden"
+          className={`md:hidden overflow-hidden ${
+            !isScrolled ? 'absolute left-0 right-0 top-full glass backdrop-blur-md' : ''
+          }`}
         >
-          <div className="py-4 space-y-4">
+          <div className={`py-4 space-y-4 ${
+            !isScrolled ? 'px-4' : ''
+          }`}>
             {navItems.map((item) => (
               <a
                 key={item.key}

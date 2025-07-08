@@ -6,33 +6,66 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const { isRTL } = useLanguage();
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const { error } = await (supabase as any)
+        .from('contacts')
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message
+        }]);
+      
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+      
+      alert('Message sent successfully!');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (error) {
+      console.error('Full error:', error);
+      alert(`Error: ${error.message || 'Please try again.'}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Address',
+      title: isRTL ? 'العنوان' : 'Address',
       value: t('contact.address'),
       color: 'text-primary'
     },
     {
       icon: Phone,
-      title: 'Phone',
+      title: isRTL ? 'الهاتف' : 'Phone',
       value: t('contact.phone'),
       color: 'text-accent-vibrant'
     },
     {
       icon: Mail,
-      title: 'Email',
+      title: isRTL ? 'البريد الإلكتروني' : 'Email',
       value: t('contact.email'),
       color: 'text-secondary-dark'
     },
     {
       icon: Clock,
-      title: 'Hours',
+      title: isRTL ? 'ساعات العمل' : 'Hours',
       value: t('contact.hours'),
       color: 'text-primary'
     }
@@ -117,7 +150,7 @@ const ContactSection = () => {
           >
             <Card className="shadow-warm border-0 card-gradient">
               <CardContent className="p-8">
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className={`block text-sm font-medium mb-2 ${
@@ -128,6 +161,9 @@ const ContactSection = () => {
                       <Input 
                         placeholder={isRTL ? 'اسمك الكامل' : 'Your full name'}
                         className="magnetic-btn"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        required
                       />
                     </div>
                     <div>
@@ -140,6 +176,9 @@ const ContactSection = () => {
                         type="email"
                         placeholder={isRTL ? 'بريدك الإلكتروني' : 'Your email address'}
                         className="magnetic-btn"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        required
                       />
                     </div>
                   </div>
@@ -154,6 +193,8 @@ const ContactSection = () => {
                       type="tel"
                       placeholder={isRTL ? 'رقم هاتفك' : 'Your phone number'}
                       className="magnetic-btn"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     />
                   </div>
                   
@@ -167,6 +208,9 @@ const ContactSection = () => {
                       placeholder={isRTL ? 'كيف يمكننا مساعدتك؟' : 'How can we help you?'}
                       rows={5}
                       className="magnetic-btn resize-none"
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      required
                     />
                   </div>
                   
@@ -174,8 +218,9 @@ const ContactSection = () => {
                     type="submit"
                     size="lg"
                     className="w-full magnetic-btn hover-lift bg-warm-gradient"
+                    disabled={isSubmitting}
                   >
-                    {isRTL ? 'إرسال الرسالة' : 'Send Message'}
+                    {isSubmitting ? 'Sending...' : (isRTL ? 'إرسال الرسالة' : 'Send Message')}
                   </Button>
                 </form>
               </CardContent>

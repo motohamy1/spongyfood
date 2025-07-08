@@ -96,7 +96,7 @@ const AboutSection = () => {
                   className="text-white text-center"
                 >
                   <div className="text-6xl font-bold mb-4 font-display">
-                    Savora
+                    Savory
                   </div>
                   <div className="text-lg opacity-90">
                     Est. 2014

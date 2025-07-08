@@ -12,6 +12,10 @@ const Hero = () => {
     window.open('https://wa.me/1234567890?text=I would like to place an order', '_blank');
   };
 
+  const handleMenu = () => {
+    document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background with Gradient */}
@@ -100,6 +104,7 @@ const Hero = () => {
               <Button 
                 size="lg"
                 className="magnetic-btn hover-lift bg-white text-primary hover:bg-white/90"
+                onClick={handleMenu}
               >
                 {t('hero.cta')}
               </Button>

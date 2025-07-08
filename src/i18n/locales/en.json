@@ -20,7 +20,9 @@
       "appetizers": "Appetizers",
       "mains": "Main Courses",
       "desserts": "Desserts",
-      "beverages": "Beverages"
+      "beverages": "Beverages",
+      "salads": "Salads",
+      "seafood": "Seafood"
     }
   },
   "about": {

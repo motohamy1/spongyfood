@@ -6,6 +6,12 @@ import { Button } from '@/components/ui/button';
 import appetizersImage from '@/assets/appetizers.jpg';
 import mainCourseImage from '@/assets/main-course.jpg';
 import dessertImage from '@/assets/dessert.jpg';
+import seafoodImage from '@/assets/download (1).png';
+import { url } from 'inspector';
+// Using placeholder images for new categories
+const beveragesImage = 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop';
+const saladsImage = 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop';
+// Placeholder for seafood image
 
 const MenuSection = () => {
   const { t } = useTranslation();
@@ -15,13 +21,11 @@ const MenuSection = () => {
     window.open('https://wa.me/1234567890?text=I would like to place an order', '_blank');
   };
 
+  const handleFullMenu = () => {
+    window.open('https://example.com/menu.pdf', '_blank');
+  };
+
   const menuCategories = [
-    {
-      key: 'appetizers',
-      image: appetizersImage,
-      price: '$12-18',
-      description: 'Fresh and flavorful starters to awaken your palate'
-    },
     {
       key: 'mains',
       image: mainCourseImage,
@@ -29,10 +33,34 @@ const MenuSection = () => {
       description: 'Expertly crafted main courses that define excellence'
     },
     {
+      key: 'appetizers',
+      image: appetizersImage,
+      price: '$12-18',
+      description: 'Fresh and flavorful starters to awaken your palate'
+    },
+    {
       key: 'desserts',
       image: dessertImage,
       price: '$8-14',
       description: 'Indulgent sweet treats to complete your experience'
+    },
+    {
+      key: 'beverages',
+      image: beveragesImage,
+      price: '$5-12',
+      description: 'Refreshing drinks and specialty beverages'
+    },
+    {
+      key: 'salads',
+      image: saladsImage,
+      price: '$10-16',
+      description: 'Fresh, healthy salads with premium ingredients'
+    },
+    {
+      key: 'seafood',
+      image: seafoodImage,
+      price: '$28-45',
+      description: 'Fresh catch of the day prepared to perfection'
     }
   ];
 
@@ -92,12 +120,16 @@ const MenuSection = () => {
                   <img
                     src={category.image}
                     alt={t(`menu.categories.${category.key}`)}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-64 object-cover 
+                                transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t
+                                  from-black/50 to-transparent opacity-0 
+                                  group-hover:opacity-100 transition-opacity duration-300" />
                   
                   {/* Price Badge */}
-                  <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                  <div className="absolute top-4 right-4 bg-primary text-primary-foreground 
+                                  px-3 py-1 rounded-full text-sm font-semibold">
                     {category.price}
                   </div>
                 </div>
@@ -131,15 +163,25 @@ const MenuSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-center mt-16"
+          className="text-center mt-16 space-y-4"
         >
-          <Button 
-            size="lg"
-            className="magnetic-btn hover-lift bg-warm-gradient"
-            onClick={handleOrder}
-          >
-            {t('common.orderNow')}
-          </Button>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button 
+              size="lg"
+              className="magnetic-btn hover-lift bg-warm-gradient"
+              onClick={handleOrder}
+            >
+              {t('common.orderNow')}
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="magnetic-btn hover-lift"
+              onClick={handleFullMenu}
+            >
+              {isRTL ? 'عرض القائمة الكاملة' : 'View Full Menu'}
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>
