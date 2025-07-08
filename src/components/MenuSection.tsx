@@ -9,8 +9,8 @@ import dessertImage from '@/assets/dessert.jpg';
 import seafoodImage from '@/assets/download (1).png';
 import { url } from 'inspector';
 // Using placeholder images for new categories
-const beveragesImage = 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop';
-const saladsImage = 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop';
+const beveragesImage = 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop&auto=format&q=80';
+const saladsImage = 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop&auto=format&q=80';
 // Placeholder for seafood image
 
 const MenuSection = () => {
@@ -122,6 +122,8 @@ const MenuSection = () => {
                     alt={t(`menu.categories.${category.key}`)}
                     className="w-full h-64 object-cover 
                                 transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t
                                   from-black/50 to-transparent opacity-0 

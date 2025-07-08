@@ -134,6 +134,8 @@ const Hero = () => {
                 className="w-full h-auto rounded-3xl shadow-warm hover-lift floating"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
+                loading="eager"
+                decoding="async"
               />
               
               {/* Decorative Elements */}
