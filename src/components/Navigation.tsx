@@ -46,7 +46,7 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             className="text-3xl font-display font-bold cursor-grab text-foreground"
           >
-            Savory
+            Tasty
           </motion.div>
 
           {/* Desktop Navigation */}
