@@ -33,18 +33,21 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 border-amber-500 border-2 rounded-full transition-all duration-300 ${
         isScrolled 
           ? 'glass shadow-warm backdrop-blur-md' 
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 py-4 ">
+        <div className="flex items-center justify-between  ">
           {/* Logo */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-3xl font-display font-bold cursor-grab text-foreground"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1.05 }}
+              transition={{ delay: 0.2, duration: 1 }}
+              whileHover={{ scale: 1.15 }}
+              className="text-3xl font-display font-bold cursor-grab text-foreground"
           >
             Tasty
           </motion.div>
