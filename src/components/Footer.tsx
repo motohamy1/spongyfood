@@ -19,7 +19,7 @@ const Footer = () => {
             className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}
           >
             <h3 className="text-2xl font-display font-bold gradient-text">
-              Savora
+              Tasty
             </h3>
             <p className={`text-white/80 ${isRTL ? 'font-arabic' : 'font-english'}`}>
               {isRTL 
@@ -119,10 +119,10 @@ const Footer = () => {
           <p className="text-white/60 flex items-center justify-center gap-1">
             {isRTL ? 'صُنع بـ' : 'Made with'} 
             <Heart size={16} className="text-red-400 fill-current" /> 
-            {isRTL ? 'في مطعم سافورا' : 'by M.Tohamy'}
+            {isRTL ? 'في مطعم التذوق' : 'by M.Tohamy'}
           </p>
           <p className="text-white/40 text-sm mt-2">
-            © 2025 Savora. {isRTL ? 'جميع الحقوق محفوظة' : 'All rights reserved'}
+            © 2025 Tasty. {isRTL ? 'جميع الحقوق محفوظة' : 'All rights reserved'}
           </p>
         </motion.div>
       </div>

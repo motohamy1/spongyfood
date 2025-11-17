@@ -33,7 +33,7 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 border-amber-500 border-2 rounded-full transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50  transition-all duration-300 ${
         isScrolled 
           ? 'glass shadow-warm backdrop-blur-md' 
           : 'bg-transparent'
@@ -47,9 +47,10 @@ const Navigation = () => {
               animate={{ opacity: 1, scale: 1.05 }}
               transition={{ delay: 0.2, duration: 1 }}
               whileHover={{ scale: 1.15 }}
-              className="text-3xl font-display font-bold cursor-grab text-foreground"
+              className="text-3xl font-display font-bold cursor-grab text-foreground flex items-center gap-0"
           >
             Tasty
+            <img className="w-8 h-9 ml-0" src="/drink.png" alt="Logo" />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -120,18 +121,14 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
+          initial={false}
           animate={{ 
             opacity: isMenuOpen ? 1 : 0, 
             height: isMenuOpen ? 'auto' : 0 
           }}
-          className={`md:hidden overflow-hidden ${
-            !isScrolled ? 'absolute left-0 right-0 top-full glass backdrop-blur-md' : ''
-          }`}
+          className="md:hidden overflow-hidden absolute left-0 right-0 top-full glass backdrop-blur-md"
         >
-          <div className={`py-4 space-y-4 ${
-            !isScrolled ? 'px-4' : ''
-          }`}>
+          <div className="py-4 space-y-4 px-4">
             {navItems.map((item) => (
               <a
                 key={item.key}
